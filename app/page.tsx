@@ -1,65 +1,99 @@
+import Link from "next/link";
+import { NavBar } from "./components/NavBar";
 import Image from "next/image";
+import oizong from "./assets/oisong.jpg";
 
 export default function Home() {
+  const listProject = [
+    {
+      id: 0,
+      title: "TF1",
+      desc: "Réaliser la refonte du Backoffice interne de TF1 afin de le rendre plus accessible aux nouveaux utilisateurs. ",
+    },
+    {
+      id: 1,
+      title: "Nysos",
+      desc: "Créer une solution numérique innovante (e-commerce) qui répond à des besoins réels.",
+    },
+    {
+      id: 2,
+      title: "RATP",
+      desc: "Réaliser une exploration éthnographique avec une approche d’éco-conception.",
+    },
+    {
+      id: 3,
+      title: "Steam",
+      desc: "Améliorer un site mobile non éco-conçue en une interface éco-conçue.",
+    },
+  ];
+  const overProject = [
+    {
+      id: 0,
+      title: "Photos",
+      desc: "Je souhaite vous présenter mes projets photos qui se décompose en plusieurs sections : photos argentique (portrait et paysage) et photo numérique avec retouches",
+    },
+    {
+      id: 1,
+      title: "Dessins et peintures",
+      desc: "Je souhaite vous montrer mon côté créatif à travers des dessins et créations que j’ai réalisé. Je fais de la peinture sur toile et également sur vêtements",
+    },
+    {
+      id: 2,
+      title: "Marque de vêtements",
+      desc: "Nysos est une marque de custom de vêtements à la peinture que j’ai pu créer de manière fictive pour mon mémoire de Master. J’espère la rendre bientôt concrète.",
+    },
+  ];
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div>
+      <NavBar />
+      <h2>Tiphanie Durand</h2>
+      <h1>Product Designer</h1>
+      <p>
+        Je suis diplômée d’un master en tant qu’Expert en Stratégie Digital
+        spécialité Lead UX - Product Designer. Je suis actuellement à la
+        recherche de ma prochaine expérience professionnel dans laquelle je
+        pourrais exprimer ma créativité et montrer mes compétences en UX et en
+        UI.
+      </p>
+      <h1>Projets</h1>
+      <section className="flex">
+        {listProject.map((project) => (
+          <div key={project.id} className="">
+            <h1>{project.title}</h1>
+            <p>{project.desc}</p>
+          </div>
+        ))}
+      </section>
+      <button className="border-2 p-3 rounded-lg">
+        <Link href={"/project"}>Voir plus</Link>
+      </button>
+      <section className=" bg-red-900 text-white">
+        <h1>Contactez moi pour vos projets</h1>
+        <h2>Création de tout types de produits</h2>
+        <p>
+          Afin de développer votre produit avec les méthodes d'UX et de UI les
+          plus adaptées à votre besoin !
+        </p>
+        <button className="border-2 p-3 rounded-lg">Contacter</button>
+      </section>
+      <article className="">
+        <h1>Projets personnels en dehors du design</h1>
+        <p>
+          Dans mon temps libre, je dessine, je fais des photos, je couds, ... Je
+          fais donc beaucoup d’activité créatives qui me permettent de
+          développer mon esprit artistique et ma créativité.
+        </p>
+        <section className="flex flex-wrap justify-center">
+          {overProject.map((project) => (
+            <div key={project.id} className="w-1/2">
+              <h1 className="text-2xl">{project.title}</h1>
+              <p>{project.desc}</p>
+              <button className="border-2 p-3 rounded-lg">Decouvrir</button>
+            </div>
+          ))}
+        </section>
+        <Image alt="oizong" src={oizong} loading="eager" />
+      </article>
     </div>
   );
 }
