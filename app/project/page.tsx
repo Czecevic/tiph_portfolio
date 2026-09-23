@@ -1,74 +1,46 @@
+import { ProjectCard } from "./components/ProjectCard";
+import { listProject } from "../../public/data/data";
+import Link from "next/link";
+
 export default function project() {
-  const listProject = [
-    {
-      id: 0,
-      title: "TF1",
-      desc: "Réaliser la refonte du Backoffice interne de TF1 afin de le rendre plus accessible aux nouveaux utilisateurs. ",
-      typeProject: "UX / UI / product Owners",
-    },
-    {
-      id: 1,
-      title: "Nysos",
-      desc: "Créer une solution numérique innovante (e-commerce) qui répond à des besoins réels.",
-      typeProject: "UX / UI / product Owners",
-    },
-    {
-      id: 2,
-      title: "RATP",
-      desc: "Réaliser une exploration éthnographique avec une approche d’éco-conception.",
-      typeProject: "UX",
-    },
-    {
-      id: 3,
-      title: "Steam",
-      desc: "Améliorer un site mobile non éco-conçue en une interface éco-conçue.",
-      typeProject: "UX",
-    },
-    {
-      id: 4,
-      title: "Bienvenue à Barquette",
-      desc: "Améliorer un site mobile non éco-conçue en une interface éco-conçue.",
-      typeProject: "UI",
-    },
-    {
-      id: 5,
-      title: "The GreenLab",
-      desc: "Améliorer un site mobile non éco-conçue en une interface éco-conçue.",
-      typeProject: "UI",
-    },
-  ];
+  const renderProjectByType = (type: string) =>
+    listProject
+      .filter((project) => project.typeProject === type)
+      .map((project) => <ProjectCard key={project.id} project={project} />);
   return (
-    <div>
-      <h1>Project Product Owner / UX / UI</h1>
-      {listProject.map(
-        (project) =>
-          project.typeProject === "UX / UI / product Owners" && (
-            <div key={project.id}>
-              <h1>{project.title}</h1>
-              <p>{project.desc}</p>
-            </div>
-          ),
-      )}
-      <h1>Project UX</h1>
-      {listProject.map(
-        (project) =>
-          project.typeProject === "UX" && (
-            <div key={project.id}>
-              <h1>{project.title}</h1>
-              <p>{project.desc}</p>
-            </div>
-          ),
-      )}
-      <h1>Project UI</h1>
-      {listProject.map(
-        (project) =>
-          project.typeProject === "UI" && (
-            <div key={project.id}>
-              <h1>{project.title}</h1>
-              <p>{project.desc}</p>
-            </div>
-          ),
-      )}
-    </div>
+    <main className="container mx-auto px-4">
+      <h1 className="text-6xl uppercase font-extrabold text-center my-5 font-heading tracking-widest">
+        Projets
+      </h1>
+      <section className="my-8">
+        <div className="flex flex-wrap -mx-3">
+          {renderProjectByType("UX / UI / product Owners")}
+        </div>
+      </section>
+      <section className="my-8">
+        <div className="flex flex-wrap -mx-3">{renderProjectByType("UX")}</div>
+      </section>
+      <section className="my-8">
+        <div className="flex flex-wrap -mx-3">{renderProjectByType("UI")}</div>
+      </section>
+      <section className="text-center my-12 p-6 bg-[#7e1114] rounded-lg">
+        <h2 className="text-2xl font-bold font-heading mb-2 text-white uppercase">
+          Contactez moi pour vos projets !
+        </h2>
+        <h3 className="text-lg text-gray-50 rounded-lg">
+          Création de tous types de produits
+        </h3>
+        <p className="max-w-xl mx-auto my-4 text-white">
+          Afin de développer votre produit avec les méthodes d’UX et de UI les
+          plus adaptées à votre besoin !
+        </p>
+        <Link
+          href="/contact"
+          className="inline-block border-2 text-white px-6 py-2 rounded font-medium hover:bg-opacity-90 transition-colors"
+        >
+          Contacter
+        </Link>
+      </section>
+    </main>
   );
 }

@@ -1,3 +1,5 @@
+import { EmploiCard } from "./components/EmploiCard";
+
 export default function About() {
   const listAbout = [
     {
@@ -85,6 +87,32 @@ export default function About() {
       type: "Alternances",
     },
   ];
+  const etudes = [
+    {
+      id: 0,
+      title: "Master Expert en Stratégie Digitale - spécialité Lead UX",
+      subTitle: "Digitale Campus - Paris",
+      desc: "Formation de 2 ans au sein de l’école Digital Campus. Cette formation avait un tronc commun qui donne des compétences en tant qu’expert en stratégie digitale complété par des cours de spécialité en UX design, product design ainsi qu’en UI design. J’ai pu développer la plupart de mes compétences pratiques (en product design, UX et UI design) lors de cette formation. ",
+    },
+    {
+      id: 1,
+      title: "Bachelor Responsable commarketing Digital",
+      subTitle: "ICMD - Paris",
+      desc: "Formation de 1 an au sein de l’école ICMD. Cette formation servait à développer des connaissances générales sur le marketing et de communication digital ce qui m’a permis d’avoir des bases solides sur le sujet étoffées par mon alternance réalisée en parrallèle.",
+    },
+    {
+      id: 2,
+      title: "Licence Sciences Psychologiques",
+      subTitle: "Université Paris Cité - Boulogne",
+      desc: "Formation de 3 ans au sein de l’Université Paris Cité. Cette formation avait pour objectif d’obtenir un socle solide sur les différents aspects de la psychologie avec un aspect scientifique appuyé.",
+    },
+    {
+      id: 3,
+      title: "Baccalauréat S, spécialité SVT",
+      subTitle: "Lycée Jean Pierre Vernant - Sèvres",
+      desc: "Formation de 3 ans au sein du lycée Jean Pierre Vernant où j’ai fait un Bac S spécialité SVT avec une option en Cinéma ce qui m’a permis de développer ma créativité et une méthode scientifique et rigoureuse.",
+    },
+  ];
   return (
     <div>
       <h1>Prodcut Designer</h1>
@@ -105,8 +133,11 @@ export default function About() {
         ))}
       </section>
       <article>
-        <h1>Emplois</h1>
+        <EmploiCard emploi={emploi} type={"Stage"} />
+        <EmploiCard emploi={emploi} type={"Alternance"} />
+        <EmploiCard emploi={emploi} type={"Associatif"} />
       </article>
+      <span className="block border-2 h-1 w-full"></span>
     </div>
   );
 }
