@@ -2,6 +2,10 @@ import { listProject } from "@/public/data/data";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ImgPres } from "./components/ImgPres";
+import { ProjectInfo } from "./components/ProjectInfo";
+import { Wireframes } from "./components/Wireframes";
+import { WireframeNysos } from "./components/Wireframes_Nysos";
 
 interface PageProps {
   params: Promise<{ projectDetail: string }>;
@@ -33,33 +37,9 @@ export default async function ProjectDetail({ params }: PageProps) {
     <main className="flex flex-col items-center p-4 md:p-6 max-w-6xl mx-auto overflow-x-hidden w-full">
       <div className="flex flex-col md:flex-row gap-6 md:gap-8 w-full items-center md:items-start">
         {findProject.imgPres && (
-          <div className="w-full md:w-1/2 relative aspect-video rounded-lg overflow-hidden shrink-0">
-            <Image
-              src={findProject.imgPres}
-              alt={findProject.title || "Illustration du projet"}
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-cover"
-            />
-          </div>
+          <ImgPres imgPres={findProject.imgPres} title={findProject.title} />
         )}
-
-        <div className="w-full md:w-1/2 flex flex-col justify-between">
-          <h1 className="text-3xl md:text-4xl font-bold uppercase mb-4">
-            {findProject.title}
-          </h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {projectInfo.map((info) => (
-              <div key={info.id} className="flex flex-col">
-                <h2 className="text-lg md:text-xl font-bold">{info.title}</h2>
-                <p className=" text-sm md:text-base">
-                  {info.value || "Non spécifié"}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <ProjectInfo title={findProject.title} projectInfo={projectInfo} />
       </div>
 
       <span className="border-t-2 w-full my-6 md:my-8"></span>
@@ -74,17 +54,14 @@ export default async function ProjectDetail({ params }: PageProps) {
           </p>
         </section>
       )}
-      {findProject.recherche && findProject.recherche.length > 0 && (
+      {findProject.recherche && (
         <section className="w-full my-6 md:my-8">
           <h2 className="text-2xl md:text-3xl font-heading text-left w-full mb-4">
             Recherche Utilisateur
           </h2>
           <p className="mb-4 text-base md:text-lg">
-            J’ai réalisé des personas au total, correspondant aux profils de
-            tous les utilisateurs. À la suite de ces personas, nous avons
-            réalisé des shadowings ainsi que des interviews :
+            {findProject.rechercheUtilisateur}
           </p>
-
           <div className="flex flex-col md:flex-row w-full">
             {findProject.recherche.map((imgRecherche, index) => (
               <div
@@ -101,15 +78,24 @@ export default async function ProjectDetail({ params }: PageProps) {
               </div>
             ))}
           </div>
-
-          <p className="my-4 text-sm md:text-base">
-            À la suite de cette recherche, on a pu retravailler les personas et
-            valider ou non nos hypothèses. Les résultats de la recherche
-            utilisateur ont été présentés aux équipes et supérieurs à travers un
-            atelier de restitution.
-          </p>
+          {findProject.suiteRechercheUtilisateur !== "" && (
+            <p className="my-4 text-sm md:text-base">
+              {findProject.suiteRechercheUtilisateur}
+            </p>
+          )}
         </section>
       )}
+      <section>
+        <h2 className="text-2xl md:text-3xl font-heading text-left w-full mb-4">
+          Cible Principal
+        </h2>
+        <p className="mb-4 text-base md:text-lg">
+          {findProject.ciblePrincipale}
+        </p>
+        <p className="mb-4 text-base md:text-lg">
+          {findProject.ciblePrincipaleSuite}
+        </p>
+      </section>
 
       {findProject.recherche_2 && (
         <section className="w-full my-4">
@@ -132,10 +118,10 @@ export default async function ProjectDetail({ params }: PageProps) {
       {findProject.backoffice && (
         <section className="w-full my-6 md:my-8">
           <h2 className="text-2xl md:text-3xl font-heading text-left w-full my-4">
-            Backoffice avant la refonte
+            {findProject.titleBackoffice}
           </h2>
           <p className="text-left w-full mb-4 text-sm md:text-base">
-            Reconstitution du visuel du backoffice avant sa refonte.
+            {findProject.descBackoffice}
           </p>
           <div className="w-full md:w-2/3 relative aspect-video mx-auto">
             <Image
@@ -150,39 +136,12 @@ export default async function ProjectDetail({ params }: PageProps) {
         </section>
       )}
 
-      {findProject.wireframes && findProject.wireframes.length > 0 && (
-        <section className="w-full my-6 md:my-8">
-          <h2 className="text-2xl md:text-3xl font-heading text-left w-full my-4">
-            Wireframes
-          </h2>
-          <p className="mb-2 md:text-base">
-            Grâce à la recherche utilisateur et à l’atelier de facilitation,
-            nous avons pu recréer l’écran et proposer des wireframes aux
-            différentes parties prenantes en réalisant des tests
-            d’utilisabilité.
-          </p>
-          <p className="w-full md:text-sm mb-4">
-            Maquettes et Wireframes réalisés à partir de la bibliothèque Ant
-            Design.
-          </p>
-          <div className="flex overflow-x-auto gap-4 my-4 pb-4 w-full max-w-full">
-            {findProject.wireframes.map((wireframe, index) => (
-              <div
-                key={index}
-                className="shrink-0 w-64 md:w-80 relative aspect-video rounded overflow-hidden"
-              >
-                <Image
-                  src={wireframe}
-                  alt={`Wireframe ${index + 1}`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  loading="eager"
-                  className="object-contain"
-                />
-              </div>
-            ))}
-          </div>
-        </section>
+      {findProject.wireframes && (
+        <Wireframes
+          wireframes={findProject.wireframes}
+          wireframesDesc={findProject.wireframesDesc}
+          wireframesDescSuite={findProject.wireframesDescSuite}
+        />
       )}
 
       {findProject.UI && (
