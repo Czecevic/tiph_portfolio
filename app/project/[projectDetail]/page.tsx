@@ -6,6 +6,7 @@ import { ImgPres } from "./components/ImgPres";
 import { ProjectInfo } from "./components/ProjectInfo";
 import { Wireframes } from "./components/Wireframes";
 import { WireframeNysos } from "./components/Wireframes_Nysos";
+import { CharteGraphique } from "./components/CharteGraphique";
 
 interface PageProps {
   params: Promise<{ projectDetail: string }>;
@@ -141,6 +142,17 @@ export default async function ProjectDetail({ params }: PageProps) {
           wireframes={findProject.wireframes}
           wireframesDesc={findProject.wireframesDesc}
           wireframesDescSuite={findProject.wireframesDescSuite}
+        />
+      )}
+
+      {findProject.charteGraphiqueTitle && (
+        <CharteGraphique
+          title={findProject.charteGraphiqueTitle}
+          desc_1={findProject.CGDesc_1}
+          desc_2={findProject.CGDesc_2}
+          desc_3={findProject.CGDesc_3}
+          imgCG={findProject.CGImage[0]}
+          imgCG_2={findProject.CGImage[1]}
         />
       )}
 

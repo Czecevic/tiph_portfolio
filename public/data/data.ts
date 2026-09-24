@@ -1,5 +1,3 @@
-import { title } from "process";
-
 export const listProject = [
   {
     id: 0,
@@ -76,7 +74,10 @@ export const listProject = [
       "Ensuite je me suis inspirée des couleurs déjà choisies de mon logo pour réaliser la charte graphique. J’ai décider de mixer une couleur vive tel que le orange afin de trancher avec le reste et donner ce côté créatif à mon site internet tout en arborant des couleurs plus neutres tels que le bleu foncé, le blanc et le noir pour donner un côté simple, chic et professionnel.",
     CGDesc_3:
       "J’ai décidé de partir sur la font Inter pour les textes et titres parce qu’elle est open source, accessible et beaucoup utilisé pour la UI. Je souhaité une police plus artistique et créative pour le logo j’ai donc choisit la font Nori Regular parce qu’elle a un effet calligraphie à la main tout en restant lisible.",
-    CGImage: ["/data/img/Nysos/charte_graphique_1.png", "/data/img/Nysos/charte_graphique_1.png"],
+    CGImage: [
+      "/data/img/Nysos/charte_graphique_1.png",
+      "/data/img/Nysos/charte_graphique_2.png",
+    ],
   },
   {
     id: 2,

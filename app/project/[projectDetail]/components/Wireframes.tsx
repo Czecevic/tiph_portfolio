@@ -15,7 +15,6 @@ export const Wireframes = ({
 }: WireframesProps) => {
   return (
     <section className="w-full my-8 md:my-12">
-      {/* En-tête avec description */}
       <div className="max-w-3xl mb-6">
         <h2 className="text-2xl md:text-3xl font-bold font-heading mb-3">
           Wireframes
