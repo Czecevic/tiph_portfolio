@@ -1,44 +1,54 @@
 import { ProjectCard } from "./components/ProjectCard";
-import { listProject } from "../../public/data/data";
+import { listProject } from "@/public/data/data";
 import Link from "next/link";
 
-export default function project() {
+export default function ProjectsPage() {
   const renderProjectByType = (type: string) =>
     listProject
       .filter((project) => project.typeProject === type)
       .map((project) => <ProjectCard key={project.id} project={project} />);
+
   return (
-    <main className="container mx-auto px-4">
-      <h1 className="text-6xl uppercase font-extrabold text-center my-5 font-heading tracking-widest">
+    <main className="max-w-6xl mx-auto px-4 py-6">
+      <h1 className="text-4xl md:text-6xl uppercase font-extrabold text-center my-6 font-heading tracking-widest">
         Projets
       </h1>
+
       <section className="my-8">
+        <h2 className="text-xl font-bold font-heading mb-4 text-gray-800 border-b pb-2">
+          UX / UI & Product Design
+        </h2>
         <div className="flex flex-wrap -mx-3">
           {renderProjectByType("UX / UI / product Owners")}
         </div>
       </section>
+
       <section className="my-8">
+        <h2 className="text-xl font-bold font-heading mb-4 text-gray-800 border-b pb-2">
+          UX Design
+        </h2>
         <div className="flex flex-wrap -mx-3">{renderProjectByType("UX")}</div>
       </section>
+
       <section className="my-8">
+        <h2 className="text-xl font-bold font-heading mb-4 text-gray-800 border-b pb-2">
+          UI Design
+        </h2>
         <div className="flex flex-wrap -mx-3">{renderProjectByType("UI")}</div>
       </section>
-      <section className="text-center my-12 p-6 bg-[#7e1114] rounded-lg">
-        <h2 className="text-2xl font-bold font-heading mb-2 text-white uppercase">
-          Contactez moi pour vos projets !
+
+      <section className="text-center my-12 p-8 bg-[#7e1114] rounded-xl text-white">
+        <h2 className="text-2xl md:text-3xl font-bold font-heading mb-2 uppercase">
+          Contactez-moi pour vos projets !
         </h2>
-        <h3 className="text-lg text-gray-50 rounded-lg">
-          Création de tous types de produits
-        </h3>
-        <p className="max-w-xl mx-auto my-4 text-white">
-          Afin de développer votre produit avec les méthodes d’UX et de UI les
-          plus adaptées à votre besoin !
+        <p className="max-w-xl mx-auto my-4 text-gray-100 text-sm md:text-base">
+          Développons ensemble votre produit avec les méthodes UX et UI les plus adaptées à vos besoins.
         </p>
         <Link
-          href="/contact"
-          className="inline-block border-2 text-white px-6 py-2 rounded font-medium hover:bg-opacity-90 transition-colors"
+          href="/about"
+          className="inline-block border-2 border-white text-white px-6 py-2.5 rounded font-medium hover:bg-white hover:text-[#7e1114] transition-colors text-sm"
         >
-          Contacter
+          En savoir plus
         </Link>
       </section>
     </main>
