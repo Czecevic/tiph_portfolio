@@ -1,14 +1,6 @@
-export const ProjectInfo = ({
-  title,
-  projectInfo,
-}: {
-  title: string;
-  projectInfo: {
-    id: number;
-    title: string;
-    value: string;
-  }[];
-}) => {
+import { ProjectInfoProps } from "@/interfaces";
+
+export const ProjectInfo = ({ title, projectInfo }: ProjectInfoProps) => {
   return (
     <div className="w-full md:w-1/2 flex flex-col justify-between">
       <h1 className="text-3xl md:text-4xl font-bold uppercase mb-4">{title}</h1>

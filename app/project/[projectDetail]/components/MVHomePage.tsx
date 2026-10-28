@@ -8,44 +8,16 @@ import nysos from "@/public/data/img/Nysos/logo_ecrit.png";
 
 // Images
 import tshirt_soprano from "@/public/data/img/Nysos/app_Nysos/t-shirt_1.jpg";
-import tshirt_face from "@/public/data/img/Nysos/app_Nysos/t-shirt_face.png";
-import tshirt_dos from "@/public/data/img/Nysos/app_Nysos/t-shirt_dos.png";
-import tshirt_arriere from "@/public/data/img/Nysos/app_Nysos/t-shirt_arriere.png";
-import tshirt_avant from "@/public/data/img/Nysos/app_Nysos/t-shirt_avant.png";
 import tiph_with_tshirt from "@/public/data/img/Nysos/app_Nysos/t-shirt_porte.jpg";
 import logo_tshirt from "@/public/data/img/Nysos/app_Nysos/logo_t-shirt.png";
-import totebag_bob from "@/public/data/img/Nysos/app_Nysos/bob_l'eponge_totebag.jpg";
-import veste from "@/public/data/img/Nysos/app_Nysos/veste.jpg";
-import veste_verte from "@/public/data/img/Nysos/app_Nysos/veste_verte.jpg";
-import pantalon from "@/public/data/img/Nysos/app_Nysos/pantalon.jpg";
-import tiph from "@/public/data/img/Nysos/app_Nysos/tiph.jpg";
+import {
+  THUMBNAILS,
+  INFO_LINKS,
+  SUGGESTIONS,
+  SUGGESTIONS_END,
+} from "@/public/data/data";
 
 import { Heart, Share2, ArrowRight } from "lucide-react";
-
-const SUGGESTIONS = [
-  { id: 0, img: totebag_bob, title: "Totebag Bob l'éponge" },
-  { id: 1, img: veste, title: "Veste" },
-  { id: 2, img: veste_verte, title: "Veste verte" },
-];
-
-const SUGGESTIONS_END = [
-  { id: 0, img: pantalon, title: "Personnalisation" },
-  { id: 1, img: tiph, title: "Contacter l'artiste" },
-];
-
-const INFO_LINKS = [
-  "Guide des tailles et coupe",
-  "Matières",
-  "Paiement et remboursement",
-  "Livraison et retours",
-];
-
-const THUMBNAILS = [
-  { src: tshirt_face, alt: "T-shirt face" },
-  { src: tshirt_dos, alt: "T-shirt dos" },
-  { src: tshirt_arriere, alt: "T-shirt arrière" },
-  { src: tshirt_avant, alt: "T-shirt avant" },
-];
 
 export const MVHomePage = () => {
   return (

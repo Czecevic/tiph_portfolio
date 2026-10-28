@@ -1,6 +1,6 @@
+// data
 import { listProject } from "@/public/data/data";
-import Image from "next/image";
-import Link from "next/link";
+// composant
 import { notFound } from "next/navigation";
 import { ImgPres } from "./components/ImgPres";
 import { ProjectInfo } from "./components/ProjectInfo";
@@ -9,6 +9,13 @@ import { CharteGraphique } from "./components/CharteGraphique";
 import { MVHomePage } from "./components/MVHomePage";
 import { MVArticle } from "./components/MVArticle";
 import { MVVetements } from "./components/MVVetements";
+
+import Image from "next/image";
+import Link from "next/link";
+import { VisiteTU } from "./components/VisiteTU";
+import { SimilarProjects } from "./components/SimiliarProject";
+import { SteamAvant } from "./components/sous-composant/SteamAvant";
+import { SteamApres } from "./components/sous-composant/SteamApres";
 
 interface PageProps {
   params: Promise<{ projectDetail: string }>;
@@ -50,12 +57,69 @@ export default async function ProjectDetail({ params }: PageProps) {
       {findProject.desc && (
         <section className="w-full text-center">
           <h2 className="text-xl md:text-2xl font-heading my-4">
-            {findProject.title}
+            {findProject.descTitle}
           </h2>
-          <p className="max-w-3xl mx-auto text-sm md:text-base px-2 text-gray-700">
+          <p className="max-w-3xl mx-auto text-sm md:text-base px-2">
             {findProject.desc}
           </p>
         </section>
+      )}
+
+      {findProject.explication && (
+        <div>
+          <h1 className="text-2xl md:text-3xl font-heading text-left w-full mb-4">
+            Explications
+          </h1>
+          <div className="flex flex-row gap-5 p-3">
+            {findProject.explicationIllu.map(({ imglink, id }) => (
+              <div key={id} className="w-full">
+                <Image
+                  src={imglink}
+                  alt={`Recherche ${id + 1}`}
+                  width={2000}
+                  height={2000}
+                  className="object-contain"
+                />
+              </div>
+            ))}
+          </div>
+          <p className="py-3">{findProject.explicationDesc}</p>
+          <p>{findProject.explicationDescSuite}</p>
+          <Image
+            src={findProject.userFlow[0].imglink}
+            alt={`Recherche ${findProject.userFlow[0].id + 1}`}
+            width={2000}
+            height={2000}
+            className="object-contain"
+          />
+        </div>
+      )}
+
+      {findProject.reponseWireframes && (
+        <div>
+          <h1 className="text-2xl md:text-3xl font-heading text-left w-full mb-4">
+            Réponse via des wireframes
+          </h1>
+          <p>{findProject.reponseWireframeDesc}</p>
+          <div className="flex flex-row gap-5 p-3">
+            {findProject.reponseWireframes.map(({ imglink, title, id }) => (
+              <div key={id} className="w-full">
+                <Image
+                  src={imglink}
+                  alt={`Recherche ${id + 1}`}
+                  width={2000}
+                  height={2000}
+                  className="object-contain"
+                />
+                <h1 className=" font-bold text-center">{title}</h1>
+              </div>
+            ))}
+          </div>
+          <div className=" text-center">
+            <h1 className="font-bold uppercase font-heading">Parcours</h1>
+            <a href="">Lien prototype</a>
+          </div>
+        </div>
       )}
 
       {findProject.recherche && findProject.recherche.length > 0 && (
@@ -83,7 +147,7 @@ export default async function ProjectDetail({ params }: PageProps) {
             ))}
           </div>
           {findProject.suiteRechercheUtilisateur && (
-            <p className="my-4 text-sm md:text-base text-gray-700">
+            <p className="my-4 text-sm md:text-base">
               {findProject.suiteRechercheUtilisateur}
             </p>
           )}
@@ -145,6 +209,46 @@ export default async function ProjectDetail({ params }: PageProps) {
         </section>
       )}
 
+      {findProject.methodologieImg && (
+        <div>
+          <h1 className="font-extrabold">Méthodologie</h1>
+          <p>{findProject.methodologieDesc}</p>
+          <div className="flex items-end">
+            {findProject.methodologieImg.map(({ imglink, id }) => (
+              <Image
+                src={imglink}
+                alt={`Recherche ${id + 1}`}
+                width={2000}
+                height={2000}
+                loading="eager"
+                className=" w-1/2 object-contain p-5"
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {findProject.title === "Steam" && (
+        <div>
+          <h2 className="font-heading">Modifications</h2>
+          <ul>
+            <li>
+              Enlèvement d’éléments non pertinents : le live et les commentaire
+            </li>
+            <li>Génération de la page selon les parties</li>
+            <li>Suppression des annonces inutiles comme les jeux similaires</li>
+            <li>Suppression des visuels (Gifs)</li>
+            <li>Diminution de la qualités des visuels</li>
+            <li>Arrêt de l’auto play</li>
+            <li>Raccourcissement de la page</li>
+            <li>
+              Création de 4 sections pour diminuer la taille de la page afin de
+              générer moins de chargement directement sur la page
+            </li>
+          </ul>
+        </div>
+      )}
+
       {findProject.wireframes && (
         <Wireframes
           wireframes={findProject.wireframes}
@@ -171,13 +275,45 @@ export default async function ProjectDetail({ params }: PageProps) {
           <h2 className="text-2xl md:text-3xl font-heading text-left w-full my-4">
             UI
           </h2>
-          <div className="w-full mx-auto">
-            {findProject.title === "Nysos" && (
-              <div className="flex flex-row gap-5">
-                <MVHomePage />
-                <MVArticle />
-                <MVVetements />
+          <div className="w-full mx-auto place-items-center">
+            {findProject.title === "Steam" && (
+              <div className="flex gap-2 flex-wrap">
+                <SteamAvant /> <SteamApres />
               </div>
+            )}
+            {findProject.title === "Nysos" && (
+              <>
+                <div className="flex md:flex-row flex-col gap-5">
+                  <MVHomePage />
+                  <MVArticle />
+                  <MVVetements />
+                </div>
+                <div className="flex flex-wrap flex-col md:flex-row gap-5 mt-5 justify-center">
+                  {findProject.UI.map(({ id, imglink }) => (
+                    <div
+                      key={id}
+                      className="relative border-2 border-[#7E1114] rounded text-black h-137 flex flex-col justify-between overflow-x-auto md:w-[48%] w-full"
+                    >
+                      <Image
+                        src={imglink}
+                        alt={`img_UI ${id}`}
+                        width={2000}
+                        height={2000}
+                        className="w-full h-auto object-contain"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+            {findProject.title !== "Steam" && (
+              <Image
+                src={findProject.UI[0].imglink}
+                alt={`img_UI ${findProject.UI[0].id}`}
+                width={2000}
+                height={2000}
+                className="w-4/5 h-auto object-contain border border-[#7E1114]"
+              />
             )}
           </div>
           <h3 className="text-lg md:text-xl font-body text-center mt-6">
@@ -193,48 +329,11 @@ export default async function ProjectDetail({ params }: PageProps) {
           </a>
         </section>
       )}
-
+      {findProject.TU && (
+        <VisiteTU TU={findProject.TU} TU_2={findProject.TU_2} />
+      )}
       <hr className="w-full my-6 md:my-8 border-gray-200" />
-
-      <section className="w-full my-6 md:my-8 text-center">
-        <h2 className="text-xl md:text-2xl font-heading font-normal my-4">
-          Projets Similaires
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6 w-full">
-          {similarProjects.map((project) => (
-            <Link
-              key={project.id}
-              href={`/project/${project.id}`}
-              className="p-4 border border-gray-100 rounded-lg hover:shadow-lg transition-shadow flex flex-col items-center text-left w-full bg-white"
-            >
-              <h3 className="font-bold text-base md:text-lg w-full mb-1">
-                {project.title}
-              </h3>
-              <p className="text-xs md:text-sm text-gray-600 w-full mb-3 line-clamp-2">
-                {project.desc}
-              </p>
-              {project.imgPres && (
-                <div className="w-full relative aspect-video overflow-hidden rounded">
-                  <Image
-                    src={project.imgPres}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
-                  />
-                </div>
-              )}
-            </Link>
-          ))}
-        </div>
-
-        <Link
-          href="/project"
-          className="inline-block border-2 border-[#7e1114] text-[#7e1114] px-6 py-3 rounded-lg font-medium hover:bg-[#7e1114] hover:text-white transition-colors text-sm md:text-base"
-        >
-          Découvrir tous les projets
-        </Link>
-      </section>
+      <SimilarProjects Projects={similarProjects} />
     </main>
   );
 }

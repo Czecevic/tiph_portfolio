@@ -2,12 +2,7 @@
 
 import Image from "next/image";
 import WireframeMobile from "./WireFrameMobile";
-
-interface WireframesProps {
-  wireframesDesc?: string;
-  wireframesDescSuite?: string;
-  wireframes?: string[];
-}
+import type { WireframesProps } from "@/interfaces";
 
 export const Wireframes = ({
   wireframesDesc,
@@ -24,25 +19,27 @@ export const Wireframes = ({
           <p className="text-base md:text-lg mb-1">{wireframesDesc}</p>
         )}
         {wireframesDescSuite && (
-          <p className="text-gray-500 text-sm">{wireframesDescSuite}</p>
+          <p className="text-sm">{wireframesDescSuite}</p>
         )}
       </div>
       <div className="flex overflow-x-auto gap-6 pb-6 pt-2 snap-x snap-mandatory scrollbar-thin">
-        <div className="w-full snap-center shrink-0 flex sm:flex-row flex-col gap-4">
-          {wireframes.length > 0 && (
-            <div className="sm:w-1/2 w-full h-125 md:h-150 bg-white rounded-lg border border-gray-200 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300">
+        {wireframes.map((imgSrc, index) => (
+          <div
+            key={index}
+            className="w-full snap-center shrink-0 flex sm:flex-row flex-col gap-4 p-4 rounded-2xl "
+          >
+            <div className="w-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300">
               <Image
-                src={wireframes[0]}
-                alt="Wireframe principal"
-                width={2000}
-                height={1600}
-                className="w-full h-auto object-top"
+                src={imgSrc}
+                alt={`Wireframe ${index + 1}`}
+                width={4000}
+                height={4000}
               />
             </div>
-          )}
-          <div className="sm:w-1/2 w-full h-125 md:h-150 bg-white rounded-lg border border-gray-200 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300">
-            <WireframeMobile />
           </div>
+        ))}
+        <div className="sm:w-1/2 w-full h-125 md:h-150 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300">
+          <WireframeMobile />
         </div>
       </div>
     </section>

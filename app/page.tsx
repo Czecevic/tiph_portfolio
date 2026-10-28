@@ -30,13 +30,12 @@ export default function Home() {
           <p className="text-md text-gray-700 leading-relaxed max-w-3xl">
             Je suis diplômée d’un Master en tant qu’Expert en Stratégie Digitale
             spécialité Lead UX - Product Designer. Je suis actuellement à la
-            recherche de ma prochaine expérience professionnelle dans laquelle je
-            pourrai exprimer ma créativité et montrer mes compétences en UX et en UI.
+            recherche de ma prochaine expérience professionnelle dans laquelle
+            je pourrai exprimer ma créativité et montrer mes compétences en UX
+            et en UI.
           </p>
         </div>
       </section>
-
-      {/* Projects Section */}
       <section>
         <h2 className="text-2xl font-bold font-heading mb-6">Projets</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -82,7 +81,8 @@ export default function Home() {
           Contactez-moi pour vos projets
         </h2>
         <p className="text-lg font-normal tracking-wide max-w-xl">
-          Création de tous types de produits avec les méthodes UX/UI les plus adaptées.
+          Création de tous types de produits avec les méthodes UX/UI les plus
+          adaptées.
         </p>
         <Link
           href="/about"
@@ -99,8 +99,9 @@ export default function Home() {
             Projets personnels en dehors du design
           </h2>
           <p className="text-gray-700 mb-6">
-            Pendant mon temps libre, je dessine, je fais de la photo, de la couture...
-            Ces activités créatives me permettent de constamment nourrir mon esprit artistique.
+            Pendant mon temps libre, je dessine, je fais de la photo, de la
+            couture... Ces activités créatives me permettent de constamment
+            nourrir mon esprit artistique.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {otherProject.map((project) => (

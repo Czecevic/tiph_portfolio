@@ -1,9 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import { FooterInfo } from "@/public/data/data";
-
-interface FooterWireFrameProps {
-  nysos: StaticImageData | string;
-}
+import { FooterWireFrameProps } from "@/interfaces";
 
 export const FooterWireFrame = ({ nysos }: FooterWireFrameProps) => {
   return (

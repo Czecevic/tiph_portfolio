@@ -1,15 +1,5 @@
 import Image from "next/image";
-
-interface CharteGraphiqueProps {
-  title?: string;
-  desc_1?: string;
-  desc_2?: string;
-  desc_3?: string;
-  imgCG?: string;
-  imgCG_2?: string;
-  logoEcrit?: string;
-  logo?: string;
-}
+import type { CharteGraphiqueProps } from "@/interfaces";
 
 const COLOR_SWATCHES = [
   "#303A8F",

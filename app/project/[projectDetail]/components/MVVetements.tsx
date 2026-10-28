@@ -1,83 +1,19 @@
-import Image, { StaticImageData } from "next/image";
-import { ChevronDown, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 
 import { TopNavBarSimulation } from "./TopNavBarSimulation";
 import { NavBarSimulation } from "./NavBarSimulation";
 import { FooterWireFrame } from "./FooterWireFrame";
 
 import nysos from "@/public/data/img/Nysos/logo_ecrit.png";
-import tshirtLogo from "@/public/data/img/Nysos/app_Nysos/t-shirt_blanc.jpg";
-import sopranos from "@/public/data/img/Nysos/app_Nysos/t-shirt_1.jpg";
-import pullVert from "@/public/data/img/Nysos/app_Nysos/veste_verte.jpg";
-import pantalonGhibli from "@/public/data/img/Nysos/app_Nysos/pantalon_dragon.jpg";
-import veste from "@/public/data/img/Nysos/app_Nysos/veste.jpg";
-import super_nana from "@/public/data/img/Nysos/app_Nysos/polos_nana.jpg";
-
-// Types
-interface ItemProduct {
-  id: number;
-  linkImg: StaticImageData;
-  title: string;
-}
-
-interface ProductCardProps {
-  item: ItemProduct;
-  className?: string;
-  imageClassName?: string;
-}
-
-// Données statiques
-const FIRST_PRODUCT_ROW: ItemProduct[] = [
-  { id: 0, linkImg: sopranos, title: "T shirt - The Sopranos" },
-  { id: 1, linkImg: tshirtLogo, title: "Pull - Mask Off" },
-];
-
-const SECOND_PRODUCT_ROW: ItemProduct[] = [
-  { id: 0, linkImg: pantalonGhibli, title: "Pantalon - Studio Ghibli" },
-  { id: 1, linkImg: veste, title: "Veste - Doberman" },
-];
-
-const FEATURED_VESTE: ItemProduct = {
-  id: 2,
-  linkImg: pullVert,
-  title: "Veste - Fleurs d'été",
-};
-
-const FEATURED_POLO: ItemProduct = {
-  id: 3,
-  linkImg: super_nana,
-  title: "Polos - Super Nanas",
-};
-
-// Sous-composants
-const ProductCard = ({
-  item,
-  className = "w-5/12",
-  imageClassName = "object-cover w-full rounded",
-}: ProductCardProps) => (
-  <div className={className}>
-    <Image
-      src={item.linkImg}
-      alt={item.title}
-      width={400}
-      height={400}
-      className={imageClassName}
-    />
-    <p className="text-xs mt-1 font-bold">{item.title}</p>
-    <p className="text-[10px]">Price</p>
-  </div>
-);
-
-const Pagination = () => (
-  <div className="flex items-center justify-center gap-3">
-    <button className="border px-1">1</button>
-    <button>2</button>
-    <button>3</button>
-    <button>
-      <ArrowRight />
-    </button>
-  </div>
-);
+import { ProductCard } from "./sous-composant/ProductCard";
+import { Pagination } from "./sous-composant/Pagination";
+import {
+  FIRST_PRODUCT_ROW,
+  FEATURED_VESTE,
+  FEATURED_POLO,
+  SECOND_PRODUCT_ROW,
+} from "@/public/data/data";
 
 export const MVVetements = () => {
   return (

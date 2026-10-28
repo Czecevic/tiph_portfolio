@@ -1,9 +1,6 @@
 import { Menu } from "lucide-react";
-import Image, { StaticImageData } from "next/image";
-
-interface TopNavBarSimulationProps {
-  nysos: StaticImageData | string;
-}
+import Image from "next/image";
+import type { TopNavBarSimulationProps } from "@/interfaces";
 
 export const TopNavBarSimulation = ({ nysos }: TopNavBarSimulationProps) => {
   return (

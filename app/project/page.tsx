@@ -10,12 +10,12 @@ export default function ProjectsPage() {
 
   return (
     <main className="max-w-6xl mx-auto px-4 py-6">
-      <h1 className="text-4xl md:text-6xl uppercase font-extrabold text-center my-6 font-heading tracking-widest">
+      <h1 className="text-4xl md:text-6xl uppercase my-6 font-headingb tracking-widest">
         Projets
       </h1>
 
       <section className="my-8">
-        <h2 className="text-xl font-bold font-heading mb-4 text-gray-800 border-b pb-2">
+        <h2 className="text-xl font-bold font-heading mb-4 pb-2">
           UX / UI & Product Design
         </h2>
         <div className="flex flex-wrap -mx-3">
@@ -24,16 +24,12 @@ export default function ProjectsPage() {
       </section>
 
       <section className="my-8">
-        <h2 className="text-xl font-bold font-heading mb-4 text-gray-800 border-b pb-2">
-          UX Design
-        </h2>
+        <h2 className="text-xl font-bold font-heading mb-4 pb-2">UX Design</h2>
         <div className="flex flex-wrap -mx-3">{renderProjectByType("UX")}</div>
       </section>
 
       <section className="my-8">
-        <h2 className="text-xl font-bold font-heading mb-4 text-gray-800 border-b pb-2">
-          UI Design
-        </h2>
+        <h2 className="text-xl font-bold font-heading mb-4 pb-2">UI Design</h2>
         <div className="flex flex-wrap -mx-3">{renderProjectByType("UI")}</div>
       </section>
 
@@ -42,7 +38,8 @@ export default function ProjectsPage() {
           Contactez-moi pour vos projets !
         </h2>
         <p className="max-w-xl mx-auto my-4 text-gray-100 text-sm md:text-base">
-          Développons ensemble votre produit avec les méthodes UX et UI les plus adaptées à vos besoins.
+          Développons ensemble votre produit avec les méthodes UX et UI les plus
+          adaptées à vos besoins.
         </p>
         <Link
           href="/about"
